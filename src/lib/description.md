@@ -1,0 +1,3 @@
+A generalist engineer driven by technical efficiency and low-level curiosity. Professionally, I maintain production-scale architectures using NestJS, Angular, and React Native.
+
+My personal work focuses on the "hard parts" of the stack: building decentralized P2P systems with Rust/Tauri and exploring bare-metal AArch64 environments. I prefer designing robust back-end logic and secure systems over high-level UI tweaking, but I am comfortable delivering the full vertical—from hardware-adjacent code to the user interface.

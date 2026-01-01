@@ -1,0 +1,44 @@
+export default [
+    {
+        "name": "RChat",
+        "description": "Decentralized, Peer-to-Peer Chatting",
+        "tags": "Rust, Tauri, Svelte, TailwindCSS, SQLite",
+        "github-link": "https://github.com/ata-sesli/rchat",
+        "website-link": "https://ata-sesli.github.io/rchat/"
+    },
+    {
+        "name": "RVault",
+        "description": "Portable, Secure, Straightforward Password Manager",
+        "tags": "Rust, Security, Cryptography",
+        "github-link": "https://github.com/ata-sesli/rvault",
+        "website-link": ""
+    },
+    {
+        "name": "BorsaGrind",
+        "description": "Community-focused finance app",
+        "tags": "Flutter, Firebase",
+        "github-link": "https://github.com/ata-sesli/BorsaGrind",
+        "website-link": ""
+    },
+    {
+        "name": "lrOS",
+        "description": "Minimal AArch64 hobby kernel ",
+        "tags": "Rust, Operating Systems, AArch64",
+        "github-link": "https://github.com/ata-sesli/lrOS",
+        "website-link": ""
+    },
+    {
+        "name": "Deimos",
+        "description": "Decision-based score game with limited lifelines",
+        "tags": "Remix, Javascript, Firebase",
+        "github-link": "https://github.com/ata-sesli/Deimos",
+        "website-link": "https://deimos-gdg.web.app/"
+    },
+    {
+        "name": "PyUrlScanner",
+        "description": "Simple to use url scanner tool.",
+        "tags": "Python",
+        "github-link": "https://github.com/ata-sesli/pyurlscanner",
+        "website-link": "Python, Networking, Security"
+    },
+]
