@@ -1,16 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@700;900&display=swap');
 
 :root {
-	/* Color Palette - Premium Dark Theme */
-	--clr-bg-main: #0a0a0c;
-	--clr-bg-secondary: #121216;
-	--clr-primary: #6d28d9; /* Deep Purple */
-	--clr-primary-glow: #8b5cf6;
-	--clr-accent: #06b6d4; /* Cyan */
-	--clr-text-main: #ffffff;
-	--clr-text-muted: #94a3b8;
-	--clr-glass-border: rgba(255, 255, 255, 0.1);
-	--clr-glass-surface: rgba(255, 255, 255, 0.03);
+	/* Color Palette - Inferno Premium Theme */
+	--clr-bg-main: #050505; /* True Black/Obsidian */
+	--clr-bg-secondary: #0f1012; /* Rich dark grey */
+	--clr-primary: #dc2626; /* Vibrant Red */
+	--clr-primary-glow: #ef4444; /* Lighter Red */
+	--clr-accent: #f97316; /* Vibrant Orange */
+	--clr-text-main: #fafafa;
+	--clr-text-muted: #a3a3a3;
+	--clr-glass-border: rgba(239, 68, 68, 0.15); /* Red tint border */
+	--clr-glass-surface: rgba(15, 16, 18, 0.6);
 
 	/* Animation Timing */
 	--ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
