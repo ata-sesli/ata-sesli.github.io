@@ -11,7 +11,14 @@ export default [
         "description": "Portable, Secure, Straightforward Password Manager",
         "tags": "Rust, Security, Cryptography",
         "github-link": "https://github.com/ata-sesli/rvault",
-        "website-link": ""
+        "website-link": "https://ata-sesli.github.io/rvault/"
+    },
+    {
+        "name": "Kiro",
+        "description": "Modern scripting language that blends Go-style concurrency with Python-level readability, powered by Rust. ",
+        "tags": "Rust, Scripting, Transpiler",
+        "github-link": "https://github.com/ata-sesli/kiro-lang",
+        "website-link": "https://ata-sesli.github.io/kiro-lang/"
     },
     {
         "name": "BorsaGrind",
@@ -37,8 +44,8 @@ export default [
     {
         "name": "PyUrlScanner",
         "description": "Simple to use url scanner tool.",
-        "tags": "Python",
+        "tags": "Python, Networking, Security",
         "github-link": "https://github.com/ata-sesli/pyurlscanner",
-        "website-link": "Python, Networking, Security"
+        "website-link": ""
     },
 ]
