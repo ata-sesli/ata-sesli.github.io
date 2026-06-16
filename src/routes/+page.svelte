@@ -15,10 +15,22 @@
 	const descriptionHtml = marked.parse(descriptionRaw);
 </script>
 
+<svelte:head>
+	<title>Ata Sesli | Systems-Oriented Product Engineer</title>
+	<meta
+		name="description"
+		content="Ata Sesli builds durable systems, secure tools, and product experiences, usually with Rust, TypeScript, and whatever else the problem demands."
+	/>
+</svelte:head>
+
 <Header />
 
 <main>
-	<Hero fullName={aboutMe['full-name']} title={aboutMe.title} />
+	<Hero
+		fullName={aboutMe['full-name']}
+		title={aboutMe.title}
+		subtitle="I build durable systems, secure tools, and product experiences, usually with Rust, TypeScript, and whatever else the problem demands."
+	/>
 
 	<div id="projects" class="section-wrapper">
 		<div class="container">

@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { marked } from 'marked';
 	import { Bot, LoaderCircle, MessageCircle, Send, X } from 'lucide-svelte';
 
 	type Message = {
@@ -12,6 +13,7 @@
 		'What kind of engineer is Ata?',
 		'Show security-related projects'
 	];
+	const workerEndpoint = 'https://too-far-gone.rappeland2005.workers.dev';
 
 	let isOpen = false;
 	let input = '';
@@ -34,16 +36,45 @@
 		input = '';
 		isLoading = true;
 
-		await new Promise((resolve) => setTimeout(resolve, 350));
+		try {
+			const response = await fetch(workerEndpoint, {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify({ message })
+			});
+			const data = await response.json();
 
-		messages = [
-			...messages,
-			{
-				role: 'assistant',
-				text: "This preview is ready for the Gemini Worker endpoint. Once connected, I'll answer using Ata's portfolio data, GitHub repositories, and project pages."
-			}
-		];
-		isLoading = false;
+			messages = [
+				...messages,
+				{
+					role: 'assistant',
+					text: data.reply ?? data.error ?? 'The chatbot is temporarily unavailable.'
+				}
+			];
+		} catch {
+			messages = [
+				...messages,
+				{
+					role: 'assistant',
+					text: 'The chatbot is temporarily unavailable.'
+				}
+			];
+		} finally {
+			isLoading = false;
+		}
+	}
+
+	function renderAssistantMessage(text: string) {
+		return marked.parse(normalizeAssistantMessage(text), { async: false });
+	}
+
+	function normalizeAssistantMessage(text: string) {
+		return text
+			.replace(/\s*\[\d+(?:\.\d+)*(?:,\s*\d+(?:\.\d+)*)*\]/g, '')
+			.replace(/:\s+\*\s+/g, ':\n\n* ')
+			.replace(/\s+\*\s+(?=(?:\*\*)?[A-Z0-9])/g, '\n* ');
 	}
 </script>
 
@@ -74,7 +105,11 @@
 			<div class="messages" aria-live="polite">
 				{#each messages as message}
 					<div class="message" class:user={message.role === 'user'}>
-						<p>{message.text}</p>
+						{#if message.role === 'assistant'}
+							<div class="message-body markdown">{@html renderAssistantMessage(message.text)}</div>
+						{:else}
+							<p>{message.text}</p>
+						{/if}
 					</div>
 				{/each}
 
@@ -257,11 +292,40 @@
 		animation: spin 0.8s linear infinite;
 	}
 
-	.message p {
+	.message p,
+	.message-body :global(p) {
 		margin: 0;
 		font-size: 0.9rem;
 		line-height: 1.45;
 		color: var(--clr-text-main);
+	}
+
+	.message-body :global(p + p),
+	.message-body :global(ul) {
+		margin-top: var(--spacing-sm);
+	}
+
+	.message-body :global(ul) {
+		margin-bottom: 0;
+		padding-left: 1.15rem;
+	}
+
+	.message-body :global(li) {
+		margin: 0.35rem 0;
+		font-size: 0.9rem;
+		line-height: 1.45;
+		color: var(--clr-text-main);
+	}
+
+	.message-body :global(strong) {
+		color: #fff;
+		font-weight: 700;
+	}
+
+	.message-body :global(a) {
+		color: var(--clr-accent);
+		text-decoration: underline;
+		text-underline-offset: 3px;
 	}
 
 	.starters {
