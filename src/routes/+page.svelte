@@ -14,7 +14,7 @@
 
 	const descriptionHtml = marked.parse(descriptionRaw);
 	const heroSubtitle =
-		'I build trustworthy software systems: secure tools, local-first products, observable infrastructure, developer tooling, and low-level systems experiments. My work usually starts from a problem I want to understand deeply, then grows into a complete tool, product, or system.';
+		'I build trustworthy software systems: secure tools, observable infrastructure, developer tooling, and low-level systems experiments. My work usually starts from a problem I want to understand deeply, then grows into a complete tool, product, or system.';
 </script>
 
 <svelte:head>

@@ -76,7 +76,7 @@ const projects: Project[] = [
   {
     name: 'MiniObserver',
     kicker: 'Wi-Fi Person Counter',
-    description: 'Motion and person counter via Wi-Fi signals.',
+    description: 'Motion detection and person counting via Wi-Fi signals.',
     tags: 'ESP32, Wi-Fi CSI, Sensing',
     links: [{ label: 'GitHub', url: 'https://github.com/ata-sesli/mini-observer' }]
   }
