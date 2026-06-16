@@ -13,38 +13,34 @@
 	import ChatBot from '$lib/components/ChatBot.svelte';
 
 	const descriptionHtml = marked.parse(descriptionRaw);
+	const heroSubtitle =
+		'I build trustworthy software systems: secure tools, local-first products, observable infrastructure, developer tooling, and low-level systems experiments. My work usually starts from a problem I want to understand deeply, then grows into a complete tool, product, or system.';
 </script>
 
 <svelte:head>
 	<title>Ata Sesli | Systems-Oriented Product Engineer</title>
 	<meta
 		name="description"
-		content="Ata Sesli builds durable systems, secure tools, and product experiences, usually with Rust, TypeScript, and whatever else the problem demands."
+		content="Ata Sesli builds trustworthy software systems: secure tools, local-first products, observable infrastructure, developer tooling, and low-level systems experiments."
 	/>
 </svelte:head>
 
 <Header />
 
 <main>
-	<Hero
-		fullName={aboutMe['full-name']}
-		title={aboutMe.title}
-		subtitle="I build durable systems, secure tools, and product experiences, usually with Rust, TypeScript, and whatever else the problem demands."
-	/>
+	<Hero fullName={aboutMe['full-name']} title={aboutMe.title} subtitle={heroSubtitle} />
 
 	<div id="projects" class="section-wrapper">
 		<div class="container">
 			<Section>
 				<div class="section-header">
-					<h2 class="section-title">Featured Projects</h2>
+					<h2 class="section-title">Selected Work</h2>
 					<div class="title-line"></div>
 				</div>
 
 				<div class="projects-grid">
 					{#each projects as project}
-						<div class="grid-item">
-							<ProjectCard {project} />
-						</div>
+						<ProjectCard {project} />
 					{/each}
 				</div>
 			</Section>
@@ -55,7 +51,7 @@
 		<div class="container">
 			<Section>
 				<div class="section-header">
-					<h2 class="section-title">About Me</h2>
+					<h2 class="section-title">How I Build</h2>
 					<div class="title-line"></div>
 				</div>
 
@@ -102,8 +98,9 @@
 
 	.projects-grid {
 		display: grid;
-		grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-		gap: var(--spacing-lg);
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 24px;
+		align-items: stretch;
 	}
 
 	.about-content {
@@ -115,8 +112,6 @@
 	.markdown-body :global(p) {
 		margin-bottom: var(--spacing-md);
 		font-size: 1.1rem;
-		leading-trim: both;
-		text-edge: cap;
 	}
 
 	.markdown-body :global(strong) {
@@ -131,9 +126,10 @@
 		text-underline-offset: 4px;
 	}
 
-	@media (max-width: 768px) {
+	@media (max-width: 760px) {
 		.projects-grid {
 			grid-template-columns: 1fr;
+			gap: 18px;
 		}
 
 		.section-title {

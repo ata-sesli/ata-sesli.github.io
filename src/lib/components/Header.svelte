@@ -19,8 +19,8 @@
 
 		<div class="header-actions">
 			<nav>
-				<a href="#projects" class="nav-link">Projects</a>
-				<a href="#about" class="nav-link">About Me</a>
+				<a href="#projects" class="nav-link">Work</a>
+				<a href="#about" class="nav-link">How I Build</a>
 			</nav>
 
 			<div class="social-links" aria-label="Social links">

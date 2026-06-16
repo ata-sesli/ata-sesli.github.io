@@ -1,59 +1,86 @@
-export default [
+export type ProjectLink = {
+	label: 'GitHub' | 'Website' | 'Demo' | 'Docs' | 'Release';
+	url: string;
+};
+
+export type Project = {
+	name: string;
+	kicker: string;
+	description: string;
+	tags: string;
+	links: ProjectLink[];
+};
+
+const projects: Project[] = [
 	{
 		name: 'RChat',
-		description: 'Decentralized, Peer-to-Peer Chatting',
-		tags: 'Rust, Tauri, Svelte, TailwindCSS, SQLite',
-		'github-link': 'https://github.com/ata-sesli/rchat',
-		'website-link': 'https://ata-sesli.github.io/rchat/'
-	},
-	{
-		name: 'Kiro',
-		description:
-			'Modern scripting language that blends Go-style concurrency with Python-level readability, powered by Rust. ',
-		tags: 'Rust, Scripting, Transpiler',
-		'github-link': 'https://github.com/ata-sesli/kiro-lang',
-		'website-link': 'https://ata-sesli.github.io/kiro-lang/'
+		kicker: 'P2P Communication',
+		description: 'Local-first encrypted peer-to-peer communication without central chat servers.',
+		tags: 'P2P, Privacy, Rust',
+		links: [
+			{ label: 'GitHub', url: 'https://github.com/ata-sesli/rchat' },
+			{ label: 'Website', url: 'https://ata-sesli.github.io/rchat/' }
+		]
 	},
 	{
 		name: 'RVault',
-		description: 'Portable, Secure, Straightforward Password Manager',
-		tags: 'Rust, Security, Cryptography',
-		'github-link': 'https://github.com/ata-sesli/rvault',
-		'website-link': 'https://ata-sesli.github.io/rvault/'
+		kicker: 'Secure Local Storage',
+		description: 'Local-first password manager focused on security, portability, and ownership.',
+		tags: 'Security, Local-First, Cryptography',
+		links: [
+			{ label: 'GitHub', url: 'https://github.com/ata-sesli/rvault' },
+			{ label: 'Website', url: 'https://ata-sesli.github.io/rvault/' }
+		]
+	},
+	{
+		name: 'Kiro',
+		kicker: 'Language & Tooling',
+		description: 'A scripting language ecosystem with Rust-powered execution and editor tooling.',
+		tags: 'Language Design, Compiler, Tooling',
+		links: [
+			{ label: 'GitHub', url: 'https://github.com/ata-sesli/kiro-lang' },
+			{ label: 'Website', url: 'https://ata-sesli.github.io/kiro-lang/' }
+		]
 	},
 	{
 		name: 'TOPS',
-		description: 'Terminal Operations System',
-		tags: 'Go, Agents, Shell',
-		'github-link': 'https://github.com/ata-sesli/tops',
-		'website-link': 'https://ata-sesli.github.io/tops/'
+		kicker: 'Terminal Orchestration',
+		description: 'Terminal-native orchestration for evidence-grounded AI workflows.',
+		tags: 'Agents, Automation, CLI',
+		links: [
+			{ label: 'GitHub', url: 'https://github.com/ata-sesli/tops' },
+			{ label: 'Website', url: 'https://ata-sesli.github.io/tops/' }
+		]
 	},
 	{
-		name: 'BorsaGrind',
-		description: 'Community-focused finance app',
-		tags: 'Flutter, Firebase',
-		'github-link': 'https://github.com/ata-sesli/BorsaGrind',
-		'website-link': ''
+		name: 'Black Dome',
+		kicker: 'Linux Security',
+		description: 'Linux security control plane for verifying intended server behavior.',
+		tags: 'Security, Observability, Infrastructure',
+		links: [{ label: 'GitHub', url: 'https://github.com/ata-sesli/black-dome' }]
 	},
 	{
-		name: 'lrOS',
-		description: 'Minimal AArch64 hobby kernel ',
-		tags: 'Rust, Operating Systems, AArch64',
-		'github-link': 'https://github.com/ata-sesli/lrOS',
-		'website-link': ''
+		name: 'Newsprint',
+		kicker: 'Local-First Reading',
+		description:
+			'Local-first macOS news reader for controlled technical reading without algorithmic feeds.',
+		tags: 'macOS, Local-First, Reading',
+		links: [{ label: 'GitHub', url: 'https://github.com/ata-sesli/newsprint' }]
 	},
 	{
-		name: 'Deimos',
-		description: 'Decision-based score game with limited lifelines',
-		tags: 'Remix, Javascript, Firebase',
-		'github-link': 'https://github.com/ata-sesli/Deimos',
-		'website-link': 'https://deimos-gdg.web.app/'
+		name: 'Octa',
+		kicker: 'AArch64 Kernel',
+		description: 'Experimental AArch64 kernel for learning computer systems from first principles.',
+		tags: 'Kernel, AArch64, Zig',
+		links: [{ label: 'GitHub', url: 'https://github.com/ata-sesli/octa' }]
 	},
 	{
-		name: 'PyUrlScanner',
-		description: 'Simple to use url scanner tool.',
-		tags: 'Python, Networking, Security',
-		'github-link': 'https://github.com/ata-sesli/pyurlscanner',
-		'website-link': ''
+		name: 'MiniObserver',
+		kicker: 'Wi-Fi Sensing',
+		description: 'Camera-free room awareness system using ESP32-S3 Wi-Fi CSI.',
+		tags: 'Embedded, Signal Processing, Privacy',
+		links: [{ label: 'GitHub', url: 'https://github.com/ata-sesli/mini-observer' }]
 	}
 ];
+
+export default projects;

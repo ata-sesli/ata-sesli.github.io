@@ -1,108 +1,181 @@
 <script lang="ts">
-    import { ExternalLink, Github } from 'lucide-svelte';
-    
-    export let project: {
-        name: string;
-        description: string;
-        tags: string;
-        "github-link": string;
-        "website-link": string;
-    };
+	import { ExternalLink, Github } from 'lucide-svelte';
+	import type { Project } from '$lib/projects';
 
-    // Parse tags string into an array if needed, assuming comma separated
-    $: tagsArray = project.tags.split(',').map(t => t.trim());
+	export let project: Project;
+
+	$: tagsArray = project.tags.split(',').map((tag) => tag.trim());
 </script>
 
-<div class="project-card glass-panel">
-    <div class="card-content">
-        <h3 class="project-title">{project.name}</h3>
-        <p class="project-desc">{project.description}</p>
-        
-        <div class="tags">
-            {#each tagsArray as tag}
-                <span class="tag">{tag}</span>
-            {/each}
-        </div>
+<article class="project-card">
+	<div class="project-card-content">
+		<div class="project-heading">
+			<p class="project-kicker">{project.kicker}</p>
+			<h3 class="project-title">{project.name}</h3>
+		</div>
 
-        <div class="links">
-            {#if project['github-link']}
-                <a href={project['github-link']} target="_blank" rel="noopener noreferrer" class="link-btn" aria-label="GitHub">
-                    <Github size={20} />
-                </a>
-            {/if}
-            {#if project['website-link']}
-                <a href={project['website-link']} target="_blank" rel="noopener noreferrer" class="link-btn" aria-label="Website">
-                    <ExternalLink size={20} />
-                </a>
-            {/if}
-        </div>
-    </div>
-</div>
+		<p class="project-description">{project.description}</p>
+
+		<div class="project-tags">
+			{#each tagsArray as tag}
+				<span>{tag}</span>
+			{/each}
+		</div>
+
+		<div class="project-card-links">
+			{#each project.links as link}
+				<a href={link.url} target="_blank" rel="noopener noreferrer" aria-label={link.label}>
+					{#if link.label === 'GitHub'}
+						<Github size={15} />
+					{:else}
+						<ExternalLink size={15} />
+					{/if}
+					<span>{link.label}</span>
+				</a>
+			{/each}
+		</div>
+	</div>
+</article>
 
 <style>
-    .project-card {
-        padding: var(--spacing-lg);
-        transition: transform 0.3s var(--ease-out-expo), box-shadow 0.3s ease;
-        position: relative;
-        overflow: hidden;
-        display: flex;
-        flex-direction: column;
-        height: 100%;
-    }
+	.project-card {
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		min-height: 260px;
+		height: auto;
+		padding: 28px;
+		border-radius: 22px;
+		border: 1px solid rgba(255, 95, 64, 0.18);
+		background: linear-gradient(180deg, rgba(255, 255, 255, 0.035), rgba(255, 255, 255, 0.012));
+		overflow: hidden;
+		transition:
+			transform 0.22s ease,
+			border-color 0.22s ease,
+			background 0.22s ease,
+			box-shadow 0.22s ease;
+	}
 
-    .project-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 30px -10px rgba(109, 40, 217, 0.3);
-        border-color: var(--clr-primary-glow);
-    }
+	.project-card::before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 28px;
+		right: 28px;
+		height: 1px;
+		background: linear-gradient(90deg, transparent, rgba(255, 95, 64, 0.42), transparent);
+		opacity: 0.55;
+		pointer-events: none;
+	}
 
-    .project-title {
-        font-size: 1.5rem;
-        margin-bottom: var(--spacing-sm);
-        color: var(--clr-text-main);
-    }
+	.project-card:hover {
+		transform: translateY(-3px);
+		border-color: rgba(255, 95, 64, 0.42);
+		background: linear-gradient(180deg, rgba(255, 255, 255, 0.055), rgba(255, 255, 255, 0.018));
+		box-shadow: 0 14px 30px -24px rgba(255, 95, 64, 0.45);
+	}
 
-    .project-desc {
-        color: var(--clr-text-muted);
-        margin-bottom: var(--spacing-md);
-        flex-grow: 1;
-    }
+	.project-card-content {
+		display: flex;
+		flex: 1;
+		flex-direction: column;
+		gap: 16px;
+		min-width: 0;
+	}
 
-    .tags {
-        display: flex;
-        flex-wrap: wrap;
-        gap: var(--spacing-sm);
-        margin-bottom: var(--spacing-lg);
-    }
+	.project-heading {
+		display: flex;
+		flex-direction: column;
+		gap: 6px;
+	}
 
-    .tag {
-        font-size: 0.75rem;
-        padding: 0.25rem 0.75rem;
-        border-radius: 999px;
-        background: rgba(255, 255, 255, 0.05);
-        border: 1px solid var(--clr-glass-border);
-        color: var(--clr-text-muted);
-    }
+	.project-kicker {
+		margin: 0;
+		color: rgba(255, 126, 95, 0.78);
+		font-size: 0.74rem;
+		font-weight: 700;
+		letter-spacing: 0.11em;
+		line-height: 1.2;
+		text-transform: uppercase;
+	}
 
-    .links {
-        display: flex;
-        gap: var(--spacing-md);
-        margin-top: auto;
-    }
+	.project-title {
+		margin: 0;
+		color: var(--clr-text-main);
+		font-size: clamp(1.35rem, 1.2rem + 0.35vw, 1.65rem);
+		font-weight: 750;
+		letter-spacing: -0.03em;
+		line-height: 1.08;
+	}
 
-    .link-btn {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 0.5rem;
-        border-radius: 50%;
-        background: rgba(255, 255, 255, 0.05);
-        transition: background 0.2s, transform 0.2s;
-    }
+	.project-description {
+		max-width: 58ch;
+		margin: 0;
+		color: var(--clr-text-muted);
+		font-size: 0.98rem;
+		line-height: 1.62;
+	}
 
-    .link-btn:hover {
-        background: var(--clr-primary);
-        transform: scale(1.1);
-        color: white;
-    }
+	.project-tags {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 8px;
+	}
+
+	.project-tags span {
+		display: inline-flex;
+		align-items: center;
+		min-height: 27px;
+		padding: 0.25rem 0.68rem;
+		border: 1px solid rgba(255, 255, 255, 0.08);
+		border-radius: 999px;
+		background: rgba(255, 255, 255, 0.045);
+		color: rgba(255, 255, 255, 0.66);
+		font-size: 0.74rem;
+		font-weight: 500;
+		line-height: 1;
+	}
+
+	.project-card-links {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 10px;
+		margin-top: auto;
+		padding-top: 4px;
+	}
+
+	.project-card-links a {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		gap: 0.42rem;
+		min-height: 34px;
+		padding: 0.45rem 0.78rem;
+		border: 1px solid rgba(255, 95, 64, 0.2);
+		border-radius: 999px;
+		background: rgba(255, 95, 64, 0.055);
+		color: rgba(255, 238, 232, 0.82);
+		font-size: 0.8rem;
+		font-weight: 650;
+		line-height: 1;
+		transition:
+			transform 0.18s ease,
+			background 0.18s ease,
+			border-color 0.18s ease,
+			color 0.18s ease;
+	}
+
+	.project-card-links a:hover {
+		transform: translateY(-1px);
+		border-color: rgba(255, 95, 64, 0.48);
+		background: rgba(255, 95, 64, 0.16);
+		color: #fff;
+	}
+
+	@media (max-width: 760px) {
+		.project-card {
+			min-height: 0;
+			padding: 24px;
+		}
+	}
 </style>
