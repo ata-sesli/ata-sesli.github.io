@@ -10,7 +10,6 @@
 <article class="project-card">
 	<div class="project-card-content">
 		<div class="project-heading">
-			<p class="project-kicker">{project.kicker}</p>
 			<h3 class="project-title">{project.name}</h3>
 		</div>
 
@@ -86,17 +85,6 @@
 	.project-heading {
 		display: flex;
 		flex-direction: column;
-		gap: 6px;
-	}
-
-	.project-kicker {
-		margin: 0;
-		color: rgba(255, 126, 95, 0.78);
-		font-size: 0.74rem;
-		font-weight: 700;
-		letter-spacing: 0.11em;
-		line-height: 1.2;
-		text-transform: uppercase;
 	}
 
 	.project-title {

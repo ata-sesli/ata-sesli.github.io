@@ -45,12 +45,13 @@
 				body: JSON.stringify({ message })
 			});
 			const data = await response.json();
+			const reply = data.reply ?? data.error;
 
 			messages = [
 				...messages,
 				{
 					role: 'assistant',
-					text: data.reply ?? data.error ?? 'The chatbot is temporarily unavailable.'
+					text: typeof reply === 'string' ? reply : 'The chatbot is temporarily unavailable.'
 				}
 			];
 		} catch {
@@ -71,7 +72,7 @@
 	}
 
 	function normalizeAssistantMessage(text: string) {
-		return text
+		return (text || '')
 			.replace(/\s*\[\d+(?:\.\d+)*(?:,\s*\d+(?:\.\d+)*)*\]/g, '')
 			.replace(/:\s+\*\s+/g, ':\n\n* ')
 			.replace(/\s+\*\s+(?=(?:\*\*)?[A-Z0-9])/g, '\n* ');
