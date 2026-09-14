@@ -3,7 +3,7 @@
   <rect x="80" y="116" width="90" height="6" rx="3" fill="#ff7956"/>
   <g font-family="Arial, Helvetica, sans-serif">
     <text x="80" y="246" font-size="90" font-weight="700" fill="#f5f5f5">Ata Sesli</text>
-    <text x="80" y="324" font-size="38" fill="#ff895f">Systems-Oriented Product Engineer</text>
+    <text x="80" y="324" font-size="38" fill="#ff895f">Systems &amp; Product Engineer</text>
     <text x="80" y="400" font-size="28" fill="#bcbcbc">Secure tools. Developer tooling. Low-level systems.</text>
     <text x="80" y="536" font-size="24" fill="#bcbcbc">ata-sesli.github.io</text>
   </g>
