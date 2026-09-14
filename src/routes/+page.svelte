@@ -18,6 +18,29 @@
 </script>
 
 <svelte:head>
+	<link rel="canonical" href="https://ata-sesli.github.io/" />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://ata-sesli.github.io/" />
+	<meta property="og:title" content="Ata Sesli | Systems-Oriented Product Engineer" />
+	<meta property="og:description" content={heroSubtitle} />
+	<meta property="og:image" content="https://ata-sesli.github.io/social-preview.png" />
+	<meta property="og:image:alt" content="Ata Sesli — Systems-Oriented Product Engineer" />
+	<meta name="twitter:card" content="summary_large_image" />
+	<script type="application/ld+json">
+		{
+			"@context": "https://schema.org",
+			"@type": "Person",
+			"@id": "https://ata-sesli.github.io/#person",
+			"name": "Ata Sesli",
+			"url": "https://ata-sesli.github.io/",
+			"description": "Systems-oriented product engineer building secure tools, developer tooling, and low-level systems.",
+			"sameAs": [
+				"https://github.com/ata-sesli",
+				"https://www.linkedin.com/in/ata-sesli/",
+				"https://medium.com/@atasesli05"
+			]
+		}
+	</script>
 	<title>Ata Sesli | Systems-Oriented Product Engineer</title>
 	<meta
 		name="description"

@@ -9,13 +9,12 @@ const config = {
 
 	kit: {
 		paths: {
-            base: process.env.NODE_ENV === 'production' ? '' : '',
-        },
+			base: process.env.NODE_ENV === 'production' ? '' : ''
+		},
 		appDir: 'internal',
-		 adapter: adapter({
-            // Crucial for SPA routing on GitHub Pages
-            fallback: '404.html'
-        })
+		adapter: adapter({
+			// GitHub Pages serves static/404.html for missing paths.
+		})
 	}
 };
 
