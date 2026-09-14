@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { marked } from 'marked';
 	import { Bot, LoaderCircle, MessageCircle, Send, X } from 'lucide-svelte';
+	import { CHAT_UNAVAILABLE_MESSAGE, readChatReply } from '$lib/chat-response';
 
 	type Message = {
 		role: 'assistant' | 'user';
@@ -44,14 +45,13 @@
 				},
 				body: JSON.stringify({ message })
 			});
-			const data = await response.json();
-			const reply = data.reply ?? data.error;
+			const reply = await readChatReply(response);
 
 			messages = [
 				...messages,
 				{
 					role: 'assistant',
-					text: typeof reply === 'string' ? reply : 'The chatbot is temporarily unavailable.'
+					text: reply
 				}
 			];
 		} catch {
@@ -59,7 +59,7 @@
 				...messages,
 				{
 					role: 'assistant',
-					text: 'The chatbot is temporarily unavailable.'
+					text: CHAT_UNAVAILABLE_MESSAGE
 				}
 			];
 		} finally {
